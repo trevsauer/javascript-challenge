@@ -24,23 +24,25 @@ tableData.forEach((sighting) => {
     });
 });
 
+// create the form and button variables to hold the html selectors
 var button = d3.select('#filter-btn');
-
 var form = d3.select('form')
 
+// run function for when event listeners are activated
 button.on('click', runEnter);
+form.on('submit', runEnter);
 
-form.on('submit', runEnter)
+function runEnter() {
 
-funtion runEnter() {
-
+    // prevent issues from default
     d3.event.preventDefault();
 
+    // select the tag where the user inserted an input
     var inputElement = d3.select('#datetime');
-
     var inputValue = inputElement.property('value');
     console.log(inputValue);
 
+    //filter data by user input value
     var dataFiltered = tableData.filter(tableData => tableData.datetime === inputValue);
     console.log(dataFiltered);
     tableBody.html("");
