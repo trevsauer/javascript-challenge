@@ -3,14 +3,14 @@ var tableData = data;
 
 // take in the table using D3 and the HTML ID 
 
-var tableBody = d3.select('tableBody');
+var tbody = d3.select('tbody');
 
 // do a "for each" loop to query each object in the data
 tableData.forEach((sighting) => {
 
     // retreive the row from the html tag 
     // and re-establish the variable name for the location
-    var row = tableBody.append('tr');
+    var row = tbody.append('tr');
 
 
     // do a forEach loop through the key value pairs using Object.entries
@@ -45,12 +45,12 @@ function runEnter() {
     //filter data by user input value
     var dataFiltered = tableData.filter(tableData => tableData.datetime === inputValue);
     console.log(dataFiltered);
-    tableBody.html("");
+    tbody.html("");
 
     
     dataFiltered.forEach((search) => {
 
-        var row = tableBody.append('tr');
+        var row = tbody.append('tr');
 
         Object.entries(search).forEach(([key, value]) => {
 
